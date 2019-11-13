@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title></title>
+    <meta charset="utf-8"/>
+    <script type="text/javascript">
+        function getLorum(){
+            var request = new XMLHttpRequest();
+            console.log("1 - request object created");
+
+            request.open("GET", "loripsum.net/api", true);
+
+            console.log("2 - opened request file");
+
+            request.onreadystatechange = function (){
+                console.log("3 - readystatechange event fired.");
+
+                if (request.readState == 4 && request.status == 200) {
+                    var result = request.responseText;
+                    alert(result);
+                    lorip = JSON.parse(result);
+
+                    document.getElementById("data").innerHTML = lorip;
+                }
+                else if (request.readyState == 4 && request.status != 200) {
+                    document.getElementById("data").innerHTML = "Something is "
+                    + "wrong!  Check the log to see " + 
+                    "where this went off the rails";
+                }
+                else if (request.readyState == 3) {
+
+                document.getElementById("data").innerHTML = "Too soon!" +
+                " Try again";
+
+                }
+            }
+            request.send();
+            console.log("4 - Request sent");
+        }
+    </script>
+</head>
+<body onload="getLorum()">
+    <h1>FILLER</h1>
+    <div id="data">Loading...</div>
+
+</body>
+</html>
