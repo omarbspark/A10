@@ -1,5 +1,15 @@
 <!DOCTYPE html>
 <html>
+    <style type="text/css">
+        h1{
+            text-align: center;
+            width: 100%;
+            border: 20px solid black;
+            border-collapse: collapse;
+            }
+        body{
+                background-color: #07FAD5; 
+    </style>
 <head>
     <title></title>
     <meta charset="utf-8"/>
@@ -8,7 +18,7 @@
             var request = new XMLHttpRequest();
             console.log("1 - request object created");
 
-            request.open("GET","https://api.darksky.net/forecast/0e30176f0682d76f450c792a96102c97/37.8267,-122.4233", true);
+            request.open("GET","loripsum.net/api/10/short/headers", true);
 
             console.log("2 - opened request file");
 
@@ -20,7 +30,7 @@
                     alert(result);
                     lorip = JSON.parse(result);
 
-                    document.getElementById("data").innerHTML = lorip;
+                    document.getElementById("data").innerHTML = lorip["h1"];
                 }
                 else if (request.readyState == 4 && request.status != 200) {
                     document.getElementById("data").innerHTML = "Something is "
@@ -42,6 +52,41 @@
 <body onload="getLorum()">
     <h1>FILLER</h1>
     <div id="data">Loading...</div>
+    <div> Initially the API was working and would insert 10 short 
+    headers in lorum ipsum and then before submission I kept getting 
+    a 404 error and have no idea why as I havent changed anything in my code.
+    </div>
 
+    <div> Thus I will answer the questions on the hw with the assumption that
+        it could be restored back to what it did initially.
+
+        Description of API: The API I used for this assignment was a lorumip
+        sum generator but "the one that doesnt suck" by the websites definition
+
+        The api could be used with a basic call loripsum.net/api or if the user
+        wanted something more specific the API allows you to add more parameters
+        like links, unordered lists, block quotes, headers, and more as well
+        as lengths of paragraphs and such.
+
+        Website API was found: I found the api from this website: https://loripsum.net/
+        and I found that website from here https://www.diycode.cc/projects/toddmotto/public-apis
+
+        I used a GET request to get 10 short headers from the generator and insert
+        them into the div that has the id "data." I then sent a request to the
+        API at the end.
+
+        Two Applications where the API would be useful: 
+            1.) Filling in a general outline --> if you have constructed the
+            design of a website and want to see how things look, you can 
+            easily insert links, lists, numbers, text and others things from
+            this API into your website. This gives you a gernal idea of how
+            it would look in the current format you have once it's filled
+            with the information you want to put in the website.
+
+            2.) Tutorial using API's: This API is pretty easy to use as there
+            is no API key needed to access it. The URL api link is also very
+            short. This API would be used best when conductiong a GET request
+            tutorial as it gives very basic JSON data that can be parsed out. 
+    </div>
 </body>
 </html>
